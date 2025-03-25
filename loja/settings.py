@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
-from django.contrib.messages import constants
 import os
+from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'produto',
+    'pedido',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,7 +45,7 @@ INSTALLED_APPS = [
 
 
 
-
+    # TODO: Remover debug toolbar
     'debug_toolbar'
 ]
 
@@ -57,7 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
 
-
+    # TODO: Remover debug toolbar
     'debug_toolbar.middleware.DebugToolbarMiddleware'
 ]
 
@@ -129,13 +131,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'templates/static')
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES__DIRS = [
-    os.path.join('static')
+    os.path.join('templates/static')
 ]\
 
-MEDIA__URL = '/media/'
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MESSAGE_TAGS = {
@@ -156,6 +158,7 @@ SESSION_COOKIE_AGE = 60 * 60 * 24 * 7
 
 SESSION_SAVE_EVERY_REQUEST = False
 
+# TODO: Remover debug toolbar
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
